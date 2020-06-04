@@ -6,16 +6,18 @@ import {
     Link
   } from "react-router-dom";
 import { useNetworkStatus } from 'react-adaptive-hooks/network';
+import useAdaptiveLoading from './useAdaptiveLoading';
 import gambar2g from './3g.jpg';
 import gambar4g from './4g.jpg';
+import morbius from './movie.mp4';
 
-function Home() {
-    const { effectiveConnectionType } = useNetworkStatus();
+const Home = () => {
+  const { effectiveConnectionType } = useNetworkStatus();
 
-    console.log(effectiveConnectionType);
+  const renderContent = () => {
     switch(effectiveConnectionType) {
         case 'slow-2g':
-        return <img src={gambar2g} alt='low resolution' width="560" height="315" />;
+        return <div>HARUSNYA GAMBAR HEHE</div>;
         
         case '2g':
         return <img src={gambar2g} alt='medium resolution' width="560" height="315" />;
@@ -24,27 +26,35 @@ function Home() {
         return <img src={gambar4g} alt='high resolution' width="560" height="315" />;
         
         case '4g':
-        return <iframe title="4g" width="560" height="315" src="https://www.youtube.com/embed/pjhOjHDX0A8" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>;
+        return <video width="560" height="315" controls>
+          <source src={morbius} type='video/mp4' />
+        </video>;
         
         default:
         return <div>INTERNET BAKIKUK</div>;   
     }
+  }
+
+  return (
+    <div>
+      <p>Network Type: {effectiveConnectionType}</p>
+      {renderContent()}
+    </div>
+  )
 }
-  
-function About() {
-    return (
-      <div>
-        <h2>About</h2>
-      </div>
-    );
-}
-  
-function Dashboard() {
-    return (
-      <div>
-        <h2>Dashboard</h2>
-      </div>
-    );
+
+const Lite = () => {
+const { networkType, deviceMemory, processorCore, downlink, isMobile } = useAdaptiveLoading();
+
+  return (
+  <div>
+    <p>Tipe Koneksi: {networkType}</p>
+  <p>Device Memory: {deviceMemory} (Maksimal 8)</p>
+  <p>Processor Core: {processorCore} (Jumlah thread-nya, 1 core = 2 thread)</p>
+  <p>Downlink: {downlink}</p>
+  <p>isMobile: {String(isMobile)}</p>
+  </div>
+)
 }
 
 const App = () => {
@@ -53,13 +63,10 @@ const App = () => {
       <div style={{margin: 50}}>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">Google Adaptive Hooks</Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
+            <Link to="/lite">Lite Adaptive Hooks</Link>
           </li>
         </ul>
 
@@ -76,11 +83,8 @@ const App = () => {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/dashboard">
-            <Dashboard />
+          <Route exact path="/lite">
+            <Lite />
           </Route>
         </Switch>
       </div>
