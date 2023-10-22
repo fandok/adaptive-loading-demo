@@ -3117,19 +3117,14 @@ packages:
     hasBin: true
     dev: false
 
-  /ansi-regex@4.1.0:
-    resolution: {integrity: sha512-1apePfXM1UOSqw0o9IiFAovVz9M5S1Dg+4TrDwfMewQ6p/rmMueb7tWZjQ1rx4Loy1ArBggoqGpfqqdI4rondg==}
+  /ansi-regex@4.1.1:
+    resolution: {integrity: sha512-ILlv4k/3f6vfQ4OoP2AGvirOktlQ98ZEL1k9FaQjxa3L1abBgbuTDAdPOpvbGncC0BTVQrl+OM8xZGK6tWXt7g==}
     engines: {node: '>=6'}
     dev: true
-
-  /ansi-regex@5.0.0:
-    resolution: {integrity: sha512-bY6fj56OUQ0hU1KjFNDQuJFezqKdrAyFdIevADiqrWHwSlbmBNMHp5ak2f40Pm8JTFyM2mqxkG6ngkHO11f/lg==}
-    engines: {node: '>=8'}
 
   /ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
     engines: {node: '>=8'}
-    dev: false
 
   /ansi-regex@6.0.1:
     resolution: {integrity: sha512-n5M855fKb2SsfMIiFFoVrABHJC8QtHwVx+mHWP3QcEqBHYienj5dHSgjbxtC0WEZXYt4wcD6zrQElDPhFuZgfA==}
@@ -8684,7 +8679,7 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       '@jest/types': 24.9.0
-      ansi-regex: 4.1.0
+      ansi-regex: 4.1.1
       ansi-styles: 3.2.1
       react-is: 16.13.1
     dev: true
@@ -8694,7 +8689,7 @@ packages:
     engines: {node: '>= 8.3'}
     dependencies:
       '@jest/types': 25.5.0
-      ansi-regex: 5.0.0
+      ansi-regex: 5.0.1
       ansi-styles: 4.2.1
       react-is: 16.13.1
     dev: true
@@ -9829,7 +9824,7 @@ packages:
     resolution: {integrity: sha512-AuvKTrTfQNYNIctbR1K/YGTR1756GycPsg7b9bdV9Duqur4gv6aKqHXah67Z8ImS7WEz5QVcOtlfW2rZEugt6w==}
     engines: {node: '>=8'}
     dependencies:
-      ansi-regex: 5.0.0
+      ansi-regex: 5.0.1
     dev: false
 
   /strip-ansi@6.0.1:
