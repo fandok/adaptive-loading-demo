@@ -1,66 +1,74 @@
-import React from 'react';
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
-import { useNetworkStatus } from 'react-adaptive-hooks/network';
-import useAdaptiveLoading from './useAdaptiveLoading';
-import gambar2g from './3g.jpg';
-import gambar4g from './4g.jpg';
-import morbius from './movie.mp4';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useNetworkStatus } from "react-adaptive-hooks/network";
+import useAdaptiveLoading from "./useAdaptiveLoading";
+import gambar2g from "./3g.jpg";
+import gambar4g from "./4g.jpg";
+import morbius from "./movie.mp4";
 
 const Home = () => {
   const { effectiveConnectionType } = useNetworkStatus();
 
   const renderContent = () => {
-    switch(effectiveConnectionType) {
-        case 'slow-2g':
+    switch (effectiveConnectionType) {
+      case "slow-2g":
         return <div>HARUSNYA GAMBAR HEHE</div>;
-        
-        case '2g':
-        return <img src={gambar2g} alt='medium resolution' width="560" height="315" />;
-        
-        case '3g':
-        return <img src={gambar4g} alt='high resolution' width="560" height="315" />;
-        
-        case '4g':
-        return <video width="560" height="315" controls>
-          <source src={morbius} type='video/mp4' />
-        </video>;
-        
-        default:
-        return <div>INTERNET BAKIKUK</div>;   
+
+      case "2g":
+        return (
+          <img
+            src={gambar2g}
+            alt="medium resolution"
+            width="560"
+            height="315"
+          />
+        );
+
+      case "3g":
+        return (
+          <img src={gambar4g} alt="high resolution" width="560" height="315" />
+        );
+
+      case "4g":
+        return (
+          <video width="560" height="315" controls>
+            <source src={morbius} type="video/mp4" />
+          </video>
+        );
+
+      default:
+        return <div>INTERNET BAKIKUK</div>;
     }
-  }
+  };
 
   return (
     <div>
       <p>Network Type: {effectiveConnectionType}</p>
       {renderContent()}
     </div>
-  )
-}
+  );
+};
 
 const Lite = () => {
-const { networkType, deviceMemory, processorCore, downlink, isMobile } = useAdaptiveLoading();
+  const { networkType, deviceMemory, processorCore, downlink, isMobile } =
+    useAdaptiveLoading();
 
   return (
-  <div>
-    <p>Tipe Koneksi: {networkType}</p>
-  <p>Device Memory: {deviceMemory} (Maksimal 8)</p>
-  <p>Processor Core: {processorCore} (Jumlah thread-nya, 1 core = 2 thread)</p>
-  <p>Downlink: {downlink}</p>
-  <p>isMobile: {String(isMobile)}</p>
-  </div>
-)
-}
+    <div>
+      <p>Tipe Koneksi: {networkType}</p>
+      <p>Device Memory: {deviceMemory} (Maksimal 8)</p>
+      <p>
+        Processor Core: {processorCore} (Jumlah thread-nya, 1 core = 2 thread)
+      </p>
+      <p>Downlink: {downlink}</p>
+      <p>isMobile: {String(isMobile)}</p>
+    </div>
+  );
+};
 
 const App = () => {
-    return (
-        <Router>
-      <div style={{margin: 50}}>
+  return (
+    <Router>
+      <div style={{ margin: 50 }}>
         <ul>
           <li>
             <Link to="/">Google Adaptive Hooks</Link>
@@ -89,7 +97,7 @@ const App = () => {
         </Switch>
       </div>
     </Router>
-    )
-}
+  );
+};
 
 export default App;
