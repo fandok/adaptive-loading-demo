@@ -1,13 +1,24 @@
-
-const mobileList = [/Android/i, /webOS/i, /iPhone/i, /iPad/i, /iPod/i, /BlackBerry/i, /Windows Phone/i];
+const mobileList = [
+  /Android/i,
+  /webOS/i,
+  /iPhone/i,
+  /iPad/i,
+  /iPod/i,
+  /BlackBerry/i,
+  /Windows Phone/i,
+];
 
 const canUseDOM = () => {
-    return Boolean(typeof window !== 'undefined' && window.document && window.document.createElement);
-}
+  return Boolean(
+    typeof window !== "undefined" &&
+      window.document &&
+      window.document.createElement
+  );
+};
 
 const useAdaptiveLoading = () => {
   const props = {
-    networkType: '4g',
+    networkType: "4g",
     deviceMemory: 0,
     processorCore: 0,
     downlink: 0,
@@ -57,7 +68,7 @@ const useAdaptiveLoading = () => {
       return;
     }
 
-    props.isMobile = mobileList.some(value => {
+    props.isMobile = mobileList.some((value) => {
       return navigator.userAgent.match(value);
     });
   };
